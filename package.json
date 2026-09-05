@@ -1,0 +1,90 @@
+{
+    "name": "enderbot-sdk",
+    "version": "0.1.0",
+    "description": "Typed TypeScript client for the EnderBot public wiki JSON API",
+    "keywords": [
+        "enderbot",
+        "wiki",
+        "sdk",
+        "discord",
+        "api-client"
+    ],
+    "license": "MIT",
+    "author": "Akayashuu",
+    "homepage": "https://github.com/Akayashuu/enderbot-sdk#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Akayashuu/enderbot-sdk.git"
+    },
+    "bugs": {
+        "url": "https://github.com/Akayashuu/enderbot-sdk/issues"
+    },
+    "type": "module",
+    "engines": {
+        "node": ">=22",
+        "bun": ">=1.2"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/index.js"
+            },
+            "require": {
+                "types": "./dist/index.d.cts",
+                "default": "./dist/index.cjs"
+            }
+        },
+        "./package.json": "./package.json"
+    },
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "bin": {
+        "enderbot-wiki": "./dist/enderbot-wiki.js"
+    },
+    "files": [
+        "dist",
+        "README.md",
+        "CHANGELOG.md",
+        "LICENSE"
+    ],
+    "sideEffects": false,
+    "publishConfig": {
+        "access": "public",
+        "provenance": true
+    },
+    "scripts": {
+        "prebuild": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+        "build": "tsup",
+        "typecheck": "node node_modules/tsc7/bin/tsc --noEmit && node node_modules/tsc7/bin/tsc -p tsconfig.examples.json --noEmit",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "test:live": "ENDERBOT_SDK_LIVE=1 vitest run",
+        "test:bun": "bun run vitest run",
+        "coverage": "vitest run --coverage",
+        "smoke": "node scripts/runtime-check.mjs",
+        "smoke:bun": "bun scripts/runtime-check.mjs",
+        "lint": "biome check .",
+        "format": "biome check --write .",
+        "publint": "publint --strict",
+        "attw": "attw --pack .",
+        "check": "npm run lint && npm run typecheck && npm run test && npm run build && npm run publint && npm run attw && npm run smoke",
+        "check:bun": "bun run lint && bun run typecheck && bun run test:bun && bun run build && bun run publint && bun run attw && bun run smoke:bun",
+        "prepublishOnly": "npm run check"
+    },
+    "devDependencies": {
+        "@arethetypeswrong/cli": "^0.18.5",
+        "@biomejs/biome": "^2.5.12",
+        "@types/node": "^24.13.3",
+        "@vitest/coverage-v8": "^5.0.0",
+        "publint": "^0.3.24",
+        "tsc7": "npm:typescript@^7.0.2",
+        "tsup": "^8.5.1",
+        "typescript": "^6.0.3",
+        "vitest": "^5.0.0"
+    },
+    "overrides": {
+        "esbuild": "^0.28.2"
+    }
+}
