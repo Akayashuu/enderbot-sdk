@@ -60,7 +60,7 @@ One endpoint answers every path: `GET /wiki/json/<path>`. Four document shapes, 
 
 | `kind` | Shape | Example path |
 |---|---|---|
-| one of the 11 entity types | `id`, `canonical`, `data`, `relatedDrops`, `children` | `items/carrot`, `pets/cat` |
+| one of the 13 entity types | `id`, `canonical`, `data`, `relatedDrops`, `children` | `items/carrot`, `pets/cat` |
 | `category` | `children` only | `items`, `areas/abyss_trench/drops` |
 | `category` at the root | plus `generatedFrom` and `counts` | `` (empty path) |
 | `guide` | `blocks` | `guides/economy/trading` |
@@ -98,7 +98,7 @@ await wiki.resolve("recipe", "recipe:furnace:adamantite_ingot")  // "recipes/fur
 ```
 
 One helper per entity type: `item`, `recipe`, `command`, `area`, `drop`, `pet`, `shop`, `npc`,
-`region`, `concept`, `event`. Each accepts the prefixed id or the bare one.
+`region`, `concept`, `event`, `badge`, `title`. Each accepts the prefixed id or the bare one.
 
 ## Walking the tree
 

@@ -22,6 +22,15 @@ live("live wiki API", () => {
         expect(wiki.text.of(carrot.name)).toBeTruthy()
     }, 30_000)
 
+    it("serves a badge and a title page", async () => {
+        const badge = await wiki.badge("badge:developer")
+        const title = await wiki.title("nitro_chosen")
+        expect(badge.path).toBe("badges/developer")
+        expect(badge.data.equippedSlots).toBeGreaterThanOrEqual(0)
+        expect(title.path).toBe("titles/nitro_chosen")
+        expect(title.data.rarity).toBeTruthy()
+    }, 30_000)
+
     it("answers 404 on an unknown page", async () => {
         expect(await wiki.tryDocument("items/definitely_not_a_thing")).toBeNull()
     }, 30_000)

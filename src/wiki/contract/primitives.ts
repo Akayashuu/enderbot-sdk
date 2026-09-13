@@ -10,6 +10,8 @@ export const WIKI_ENTITY_TYPES = [
     "region",
     "concept",
     "event",
+    "badge",
+    "title",
 ] as const
 
 export type WikiEntityType = (typeof WIKI_ENTITY_TYPES)[number]

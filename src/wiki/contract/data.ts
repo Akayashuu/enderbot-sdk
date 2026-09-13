@@ -307,6 +307,17 @@ export interface WikiGuideBlock extends WikiProse {
     kind: string
 }
 
+export interface WikiBadgeData {
+    rarity: string
+    origin: string
+    sprite: string
+    equippedSlots: number
+}
+
+export interface WikiTitleData {
+    rarity: string
+}
+
 export type WikiDataMap = {
     item: WikiItemData
     recipe: WikiRecipeData
@@ -319,6 +330,8 @@ export type WikiDataMap = {
     region: WikiRegionData
     concept: WikiConceptData
     event: WikiEventData
+    badge: WikiBadgeData
+    title: WikiTitleData
 }
 
 export type WikiData = WikiDataMap[WikiEntityType]

@@ -20,6 +20,8 @@ const ENTITY_KINDS = [
     "region",
     "concept",
     "event",
+    "badge",
+    "title",
 ] as const
 
 const clientOf = (fetch: FakeFetch = WikiFixtures.fetch(), locale = "en") =>

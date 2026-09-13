@@ -6,6 +6,13 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.2.0]
+
+### Added
+
+- `badge` and `title` entity types: `WIKI_ENTITY_TYPES`, `WikiBadgeData`, `WikiTitleData`,
+  the `badges/` and `titles/` tree sections, and the `wiki.badge(id)` / `wiki.title(id)` helpers.
+
 ## [0.1.0]
 
 First release.
@@ -28,5 +35,6 @@ First release.
   ESM bundle, the built CommonJS bundle and the built binary against a stub wiki on whichever
   runtime invokes it, and CI runs it on Node 22, 24, 26 and on Bun.
 
-[Unreleased]: https://github.com/Akayashuu/enderbot-sdk/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/Akayashuu/enderbot-sdk/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/Akayashuu/enderbot-sdk/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/Akayashuu/enderbot-sdk/releases/tag/v0.1.0

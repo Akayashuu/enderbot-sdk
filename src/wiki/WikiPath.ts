@@ -15,6 +15,8 @@ export class WikiPath {
         region: "regions",
         concept: null,
         event: "events",
+        badge: "badges",
+        title: "titles",
     }
 
     static normalize(path: string): string {
