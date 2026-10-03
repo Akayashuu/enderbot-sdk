@@ -6,6 +6,15 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.3.0]
+
+### Added
+
+- `enchant` entity type: `WIKI_ENTITY_TYPES`, `WikiEnchantData` and `WikiEnchantLevel`, the
+  `enchants/` tree section, and the `wiki.enchant(id)` helper.
+- `effects` on `WikiItemData`: the real effects of swords, shields and boots (`WikiToolEffect`),
+  empty for every other item.
+
 ## [0.2.0]
 
 ### Added
@@ -35,6 +44,7 @@ First release.
   ESM bundle, the built CommonJS bundle and the built binary against a stub wiki on whichever
   runtime invokes it, and CI runs it on Node 22, 24, 26 and on Bun.
 
-[Unreleased]: https://github.com/Akayashuu/enderbot-sdk/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/Akayashuu/enderbot-sdk/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/Akayashuu/enderbot-sdk/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/Akayashuu/enderbot-sdk/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/Akayashuu/enderbot-sdk/releases/tag/v0.1.0

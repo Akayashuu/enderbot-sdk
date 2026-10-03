@@ -12,6 +12,7 @@ export const WIKI_ENTITY_TYPES = [
     "event",
     "badge",
     "title",
+    "enchant",
 ] as const
 
 export type WikiEntityType = (typeof WIKI_ENTITY_TYPES)[number]

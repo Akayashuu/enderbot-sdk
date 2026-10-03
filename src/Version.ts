@@ -1,6 +1,6 @@
 export class SdkVersion {
     static readonly NAME = "enderbot-sdk"
-    static readonly VALUE = "0.2.0"
+    static readonly VALUE = "0.3.0"
 
     static get userAgent(): string {
         return `${SdkVersion.NAME}/${SdkVersion.VALUE}`

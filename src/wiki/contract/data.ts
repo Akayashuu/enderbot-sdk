@@ -41,6 +41,14 @@ export interface WikiToolStats {
     jewelerLevelRequired: number
 }
 
+export type WikiToolEffectKey = "edge" | "pierce" | "armor" | "guard" | "travel"
+
+export interface WikiToolEffect {
+    key: WikiToolEffectKey
+    value: number
+    unit: "points" | "percent"
+}
+
 export interface WikiItemData {
     kind: "resource" | "tool"
     category: string
@@ -51,6 +59,7 @@ export interface WikiItemData {
     foundIn: WikiItemSource[]
     soldBy: WikiItemOffer[]
     stats: WikiToolStats | null
+    effects: WikiToolEffect[]
     progression: WikiToolProgression | null
     unlocks: string[]
 }
@@ -318,6 +327,27 @@ export interface WikiTitleData {
     rarity: string
 }
 
+export type WikiEnchantUnit = "percent" | "points"
+
+export interface WikiEnchantLevel {
+    level: number
+    value: number
+    chance: number
+    effect: WikiLocalized | null
+    applyCost: number
+    combineCost: number | null
+    removeCost: number
+}
+
+export interface WikiEnchantData {
+    sprite: string
+    unit: WikiEnchantUnit
+    reduces: boolean
+    tools: string[]
+    effectUnit: WikiLocalized | null
+    levels: WikiEnchantLevel[]
+}
+
 export type WikiDataMap = {
     item: WikiItemData
     recipe: WikiRecipeData
@@ -332,6 +362,7 @@ export type WikiDataMap = {
     event: WikiEventData
     badge: WikiBadgeData
     title: WikiTitleData
+    enchant: WikiEnchantData
 }
 
 export type WikiData = WikiDataMap[WikiEntityType]

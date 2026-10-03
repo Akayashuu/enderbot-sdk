@@ -98,7 +98,7 @@ await wiki.resolve("recipe", "recipe:furnace:adamantite_ingot")  // "recipes/fur
 ```
 
 One helper per entity type: `item`, `recipe`, `command`, `area`, `drop`, `pet`, `shop`, `npc`,
-`region`, `concept`, `event`, `badge`, `title`. Each accepts the prefixed id or the bare one.
+`region`, `concept`, `event`, `badge`, `title`, `enchant`. Each accepts the prefixed id or the bare one.
 
 ## Walking the tree
 
