@@ -12,8 +12,10 @@ Aligned with the EnderBot wiki JSON API as rewritten on 2026-11-07.
 
 ### Added
 
-- `station` entity type: `WIKI_ENTITY_TYPES` now holds 15 entries, the `stations/` tree section,
-  and the `wiki.station(id)` helper.
+- `station` entity type: the `stations/` tree section and the `wiki.station(id)` helper.
+- `encounter` entity type: the `encounters/` tree section (`comet`, `wandering_merchant`,
+  `chest_hunt`, `wild_pet`) and the `wiki.encounter(id)` helper. `WIKI_ENTITY_TYPES` now holds
+  16 entries.
 - `locale` on every entity document, naming the locale the server answered in.
 - `WikiDocumentKind` and `WikiDocumentBody`: the `data` of a document is `{ kind, view }`.
 
@@ -24,7 +26,7 @@ Aligned with the EnderBot wiki JSON API as rewritten on 2026-11-07.
   `unknown` until the page models are vendored.
 - `entityOfKind` no longer narrows `data` to a per-type row; it returns the envelope for the kind.
 - `version` is removed from every document and from the root.
-- `WikiCounts` is keyed by `WikiEntityType` and counts 15 types.
+- `WikiCounts` is keyed by `WikiEntityType` and counts 16 types.
 - The root CLI output reports `dataset <generatedFrom>` instead of the version number.
 
 ## [0.3.0]

@@ -60,7 +60,7 @@ One endpoint answers every path: `GET /wiki/json/<path>`. Four document shapes, 
 
 | `kind` | Shape | Example path |
 |---|---|---|
-| one of the 15 entity types | `id`, `locale`, `canonical`, `data`, `relatedDrops`, `children` | `items/carrot`, `pets/cat`, `stations/furnace` |
+| one of the 16 entity types | `id`, `locale`, `canonical`, `data`, `relatedDrops`, `children` | `items/carrot`, `pets/cat`, `stations/furnace`, `encounters/comet` |
 | `category` | `children` only | `items`, `areas/abyss_trench/drops` |
 | `category` at the root | plus `generatedFrom` and `counts` | `` (empty path) |
 | `guide` | `blocks` | `guides/economy/trading` |
@@ -68,7 +68,7 @@ One endpoint answers every path: `GET /wiki/json/<path>`. Four document shapes, 
 Every shape also carries `path`, `name`, `description`. Names and descriptions are
 `Record<locale, string>` over `en`, `es`, `fr`, `pt`, `pt_br`.
 
-An entity's `data` is `{ kind, view }`: `kind` names the document kind (one of the 15 entity types
+An entity's `data` is `{ kind, view }`: `kind` names the document kind (one of the 16 entity types
 or a guide, concept or dungeon page) and `view` is the page model for that kind. The view models are
 not yet typed in the SDK, so `view` is `unknown` and must be narrowed by the caller. The `locale`
 field on a document names the locale the server answered in; the SDK does not yet send a `lang`
@@ -104,7 +104,8 @@ await wiki.resolve("recipe", "recipe:furnace:adamantite_ingot")  // "recipes/fur
 ```
 
 One helper per entity type: `item`, `recipe`, `command`, `area`, `drop`, `pet`, `shop`, `npc`,
-`region`, `concept`, `event`, `badge`, `title`, `enchant`. Each accepts the prefixed id or the bare one.
+`region`, `concept`, `event`, `badge`, `title`, `enchant`, `station`, `encounter`. Each accepts
+the prefixed id or the bare one.
 
 ## Walking the tree
 

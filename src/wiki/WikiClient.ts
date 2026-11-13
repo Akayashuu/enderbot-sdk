@@ -273,6 +273,9 @@ export class WikiClient implements WikiDocumentSource {
     station(id: string, options?: RequestOptions): Promise<WikiEntityDocumentOf<"station">> {
         return this.find("station", id, options)
     }
+    encounter(id: string, options?: RequestOptions): Promise<WikiEntityDocumentOf<"encounter">> {
+        return this.find("encounter", id, options)
+    }
 
     index(options?: WikiCrawlOptions): Promise<WikiIndex> {
         if (options) return this.crawler.crawl(options)
