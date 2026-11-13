@@ -168,7 +168,6 @@ export class WikiFixtures {
 
     static root(): WikiDocument {
         return {
-            version: 7,
             kind: "category",
             path: "",
             name: { en: "Wiki", fr: "Wiki" },
@@ -197,14 +196,13 @@ export class WikiFixtures {
 
     private static areaEntity(): WikiDocument {
         return {
-            version: 7,
             kind: "area",
             path: "areas/abyss_trench",
             id: "area:abyss_trench",
             canonical: null,
             name: { en: "Abyssal Trench", fr: "Fosse abyssale" },
             description: { en: "", fr: "" },
-            data: {},
+            data: { kind: "area", view: {} },
             relatedDrops: [],
             children: [WikiFixtures.categoryChild("areas/abyss_trench/drops", "Drops")],
         } as unknown as WikiDocument
@@ -212,7 +210,6 @@ export class WikiFixtures {
 
     private static guide(): WikiDocument {
         return {
-            version: 7,
             kind: "guide",
             path: "guides/economy",
             name: { en: "Economy", fr: "Economie" },
@@ -224,7 +221,6 @@ export class WikiFixtures {
 
     private static category(path: string, label: string, children: unknown[]): WikiDocument {
         return {
-            version: 7,
             kind: "category",
             path,
             name: { en: label, fr: label },
@@ -241,14 +237,13 @@ export class WikiFixtures {
         french: string,
     ): WikiDocument {
         return {
-            version: 7,
             kind,
             path,
             id,
             canonical: null,
             name: { en: english, fr: french },
             description: { en: `${english} page`, fr: `Page ${french}` },
-            data: {},
+            data: { kind, view: {} },
             relatedDrops: [],
             children: [],
         } as unknown as WikiDocument

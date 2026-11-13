@@ -1,5 +1,10 @@
-import type { WikiDataMap, WikiGuideBlock, WikiRelatedDrop } from "./data.js"
-import type { WikiEntityType, WikiLocalized, WikiTreeNodeKind } from "./primitives.js"
+import type { WikiDocumentBody, WikiGuideBlock, WikiRelatedDrop } from "./data.js"
+import type {
+    WikiEntityType,
+    WikiLocaleCode,
+    WikiLocalized,
+    WikiTreeNodeKind,
+} from "./primitives.js"
 
 export interface WikiChild {
     slug: string
@@ -12,7 +17,6 @@ export interface WikiChild {
 }
 
 export interface WikiDocumentBase {
-    version: number
     path: string
     name: WikiLocalized | null
     description: WikiLocalized | null
@@ -21,9 +25,10 @@ export interface WikiDocumentBase {
 
 export interface WikiEntityDocumentShape<K extends WikiEntityType> extends WikiDocumentBase {
     kind: K
+    locale: WikiLocaleCode
     id: string
     canonical: string | null
-    data: WikiDataMap[K]
+    data: WikiDocumentBody
     relatedDrops: WikiRelatedDrop[]
 }
 

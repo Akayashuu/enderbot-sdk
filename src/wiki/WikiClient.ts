@@ -270,6 +270,9 @@ export class WikiClient implements WikiDocumentSource {
     enchant(id: string, options?: RequestOptions): Promise<WikiEntityDocumentOf<"enchant">> {
         return this.find("enchant", id, options)
     }
+    station(id: string, options?: RequestOptions): Promise<WikiEntityDocumentOf<"station">> {
+        return this.find("station", id, options)
+    }
 
     index(options?: WikiCrawlOptions): Promise<WikiIndex> {
         if (options) return this.crawler.crawl(options)

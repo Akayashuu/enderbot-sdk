@@ -6,6 +6,27 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.4.0]
+
+Aligned with the EnderBot wiki JSON API as rewritten on 2026-11-07.
+
+### Added
+
+- `station` entity type: `WIKI_ENTITY_TYPES` now holds 15 entries, the `stations/` tree section,
+  and the `wiki.station(id)` helper.
+- `locale` on every entity document, naming the locale the server answered in.
+- `WikiDocumentKind` and `WikiDocumentBody`: the `data` of a document is `{ kind, view }`.
+
+### Changed (breaking)
+
+- Entity `data` is now `{ kind, view }`. The per-entity row shapes (`WikiItemData`, `WikiPetData`,
+  `WikiBadgeData`, `WikiTitleData`, `WikiEnchantData`, and the rest) are removed. `view` is typed
+  `unknown` until the page models are vendored.
+- `entityOfKind` no longer narrows `data` to a per-type row; it returns the envelope for the kind.
+- `version` is removed from every document and from the root.
+- `WikiCounts` is keyed by `WikiEntityType` and counts 15 types.
+- The root CLI output reports `dataset <generatedFrom>` instead of the version number.
+
 ## [0.3.0]
 
 ### Added

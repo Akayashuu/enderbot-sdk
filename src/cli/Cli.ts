@@ -435,7 +435,7 @@ export class WikiCli {
             printer.json({ generatedFrom: root.generatedFrom, counts: root.counts })
             return 0
         }
-        this.output.out(`dataset ${root.generatedFrom} (version ${root.version})`)
+        this.output.out(`dataset ${root.generatedFrom}`)
         printer.counts(root.counts)
         return 0
     }

@@ -9,7 +9,6 @@ live("live wiki API", () => {
 
     it("serves the root with counts", async () => {
         const root = await wiki.root()
-        expect(root.version).toBeGreaterThan(0)
         expect(root.generatedFrom.length).toBeGreaterThan(0)
         expect(root.counts.item).toBeGreaterThan(0)
         expect(root.children.length).toBeGreaterThan(5)
@@ -26,9 +25,9 @@ live("live wiki API", () => {
         const badge = await wiki.badge("badge:developer")
         const title = await wiki.title("nitro_chosen")
         expect(badge.path).toBe("badges/developer")
-        expect(badge.data.equippedSlots).toBeGreaterThanOrEqual(0)
+        expect(badge.data.kind).toBe("badge")
         expect(title.path).toBe("titles/nitro_chosen")
-        expect(title.data.rarity).toBeTruthy()
+        expect(title.data.kind).toBe("title")
     }, 30_000)
 
     it("answers 404 on an unknown page", async () => {

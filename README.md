@@ -48,10 +48,10 @@ const root = await wiki.root()
 console.log(root.counts.item, root.generatedFrom)
 
 const carrot = await wiki.item("carrot")
-console.log(wiki.text.of(carrot.name), carrot.data.sellPrice)
+console.log(wiki.text.of(carrot.name), carrot.data.kind)
 
 const cat = await wiki.pet("pet:cat")
-console.log(cat.data.rarity, cat.data.skins.length)
+console.log(wiki.text.of(cat.name), cat.data.kind)
 ```
 
 ## The API in one page
@@ -60,13 +60,19 @@ One endpoint answers every path: `GET /wiki/json/<path>`. Four document shapes, 
 
 | `kind` | Shape | Example path |
 |---|---|---|
-| one of the 13 entity types | `id`, `canonical`, `data`, `relatedDrops`, `children` | `items/carrot`, `pets/cat` |
+| one of the 15 entity types | `id`, `locale`, `canonical`, `data`, `relatedDrops`, `children` | `items/carrot`, `pets/cat`, `stations/furnace` |
 | `category` | `children` only | `items`, `areas/abyss_trench/drops` |
 | `category` at the root | plus `generatedFrom` and `counts` | `` (empty path) |
 | `guide` | `blocks` | `guides/economy/trading` |
 
-Every shape also carries `version`, `path`, `name`, `description`. Names and descriptions are
+Every shape also carries `path`, `name`, `description`. Names and descriptions are
 `Record<locale, string>` over `en`, `es`, `fr`, `pt`, `pt_br`.
+
+An entity's `data` is `{ kind, view }`: `kind` names the document kind (one of the 15 entity types
+or a guide, concept or dungeon page) and `view` is the page model for that kind. The view models are
+not yet typed in the SDK, so `view` is `unknown` and must be narrowed by the caller. The `locale`
+field on a document names the locale the server answered in; the SDK does not yet send a `lang`
+query parameter, so names are read in every locale through `wiki.text`.
 
 ## Reading documents
 
@@ -81,7 +87,7 @@ await wiki.counts()                     // Record<WikiEntityType, number>
 await wiki.category("items")            // throws WikiKindMismatchError if it is not one
 await wiki.guide("guides/economy/trading")
 await wiki.entity("pets/cat")
-await wiki.entityOfKind("pet", "pets/cat")   // narrows data to WikiPetData
+await wiki.entityOfKind("pet", "pets/cat")   // WikiEntityDocumentOf<"pet">, data.kind is "pet"
 ```
 
 ## Finding an entity by id

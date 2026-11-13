@@ -18,6 +18,7 @@ export class WikiPath {
         badge: "badges",
         title: "titles",
         enchant: "enchants",
+        station: "stations",
     }
 
     static normalize(path: string): string {
