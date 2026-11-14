@@ -1,6 +1,6 @@
 {
     "name": "enderbot-sdk",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "description": "Typed TypeScript client for the EnderBot public wiki JSON API",
     "keywords": [
         "enderbot",
@@ -41,7 +41,7 @@
     "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "bin": {
-        "enderbot-wiki": "./dist/enderbot-wiki.js"
+        "enderbot-wiki": "dist/enderbot-wiki.js"
     },
     "files": [
         "dist",

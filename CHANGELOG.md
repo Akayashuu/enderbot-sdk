@@ -6,6 +6,16 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.4.1]
+
+First release published to npm.
+
+### Fixed
+
+- The `enderbot-wiki` binary is declared as `dist/enderbot-wiki.js`: npm 11 dropped the
+  `./`-prefixed path at publish time, so the package shipped without its CLI.
+- Releases publish through npm Trusted Publishing (OIDC) with provenance, no token.
+
 ## [0.4.0]
 
 Aligned with the EnderBot wiki JSON API as rewritten on 2026-11-07.
